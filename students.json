@@ -1,0 +1,38 @@
+
+	
+	
+	
+	
+
+	labInfo, err := os.Open("lab_info.json")
+	if err != nil {
+	    fmt.Println(err)
+		}
+	fmt.Println("Successfully Opened lab_info.json")
+	fmt.Println(labInfo)
+	defer labInfo.Close()
+	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
+    if err != nil {
+	    fmt.Println("ERROROROROROR")}
+	t.Execute(os.Stdout, labInfo)
+}
+
+
+func main() {
+	// Open our jsonFile
+	
+	
+	jsonFile, err := os.Open("example.json")
+	// if we os.Open returns an error then handle it
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println("Successfully Opened example.json")
+	// defer the closing of our jsonFile so that we can parse it later on
+	defer jsonFile.Close()
+
+	http.HandleFunc("/", handler)
+    http.ListenAndServe(":8080", nil)
+}

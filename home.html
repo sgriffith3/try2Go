@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Chat Example</title>
+<script type="text/javascript">
+window.onload = function () {
+    var conn;
+    var msg = document.getElementById("msg");
+    var log = document.getElementById("log");
+    function appendLog(item) {
+        var doScroll = log.scrollTop > log.scrollHeight - log.clientHeight - 1;
+        log.appendChild(item);
+        if (doScroll) {
+            log.scrollTop = log.scrollHeight - log.clientHeight;
+        }
+    }
+    document.getElementById("form").onsubmit = function () {
+        if (!conn) {
+            return false;
+        }
+        if (!msg.value) {
+            return false;
+        }
+        conn.send(msg.value);
+        msg.value = "";
+        return false;
+    };
+    if (window["WebSocket"]) {
+        conn = new WebSocket("ws://" + document.location.host + "/ws");
+        conn.onclose = function (evt) {
+            var item = document.createElement("div");
+            item.innerHTML = "<b>Connection closed.</b>";
+            appendLog(item);
+        };
+        conn.onmessage = function (evt) {
+            var messages = evt.data.split('\n');
+            for (var i = 0; i < messages.length; i++) {
+                var item = document.createElement("div");
+                item.innerText = messages[i];
+                appendLog(item);
+            }
+        };
+    } else {
+        var item = document.createElement("div");
+        item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+        appendLog(item);
+    }
+};
+</script>
+<style type="text/css">
+html {
+    overflow: hidden;
+}
+body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: gray;
+}
+#log {
+    background: white;
+    margin: 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    right: 0.5em;
+    bottom: 3em;
+    overflow: auto;
+}
+#form {
+    padding: 0 0.5em 0 0.5em;
+    margin: 0;
+    position: absolute;
+    bottom: 1em;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+
+<h2>Lab Progress</h2>
+
+<table style="width:30%">
+  <tr>
+    <th>Name</th>
+    <th>#</th>
+    <th bgcolor="#F6F6F6" >00</th>
+    <th bgcolor="#F6F6F6" >01</th>
+    <th bgcolor="#F6F6F6" >02</th> 
+    <th bgcolor="#F6F6F6" >03</th>
+    <th bgcolor="#F6F6F6" >04</th>
+    <th bgcolor="#F6F6F6" >05</th> 
+    <th bgcolor="#F6F6F6" >06</th>
+    <th bgcolor="#F6F6F6" >07</th>
+    <th bgcolor="#F6F6F6" >08</th>
+    <th bgcolor="#F6F6F6" >09</th> 
+    <th bgcolor="#F6F6F6" >10</th>
+    <th bgcolor="#F6F6F6" >11</th>
+    <th bgcolor="#F6F6F6" >12</th> 
+    <th bgcolor="#F6F6F6" >13</th>
+    <th bgcolor="#F6F6F6" >14</th>
+    <th bgcolor="#F6F6F6" >15</th>
+    <th bgcolor="#F6F6F6" >16</th> 
+    <th bgcolor="#F6F6F6" >17</th>
+    <th bgcolor="#F6F6F6" >18</th>
+    <th bgcolor="#F6F6F6" >19</th> 
+    <th bgcolor="#F6F6F6" >20</th>
+    <th bgcolor="#F6F6F6" >21</th>
+    <th bgcolor="#F6F6F6" >22</th> 
+    <th bgcolor="#F6F6F6" >23</th>
+    <th bgcolor="#F6F6F6" >24</th>
+    <th bgcolor="#F6F6F6" >25</th>
+    <th bgcolor="#F6F6F6" >26</th> 
+    <th bgcolor="#F6F6F6" >27</th>
+    <th bgcolor="#F6F6F6" >28</th>
+    <th bgcolor="#F6F6F6" >29</th> 
+    <th bgcolor="#F6F6F6" >30</th>    
+  </tr>
+
+  <tr>
+    <td>Jill</td>
+    <td>60</td>   
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#FF0000"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F8F8F8"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>    
+</tr>
+  
+  <tr>
+    <td>Eve</td>
+    <td>61</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#007700"> </td>
+    <td bgcolor="#BB0000"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>        
+  </tr>
+
+  <tr>
+    <td>John</td>
+    <td>62</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+  </tr>
+
+  <tr>
+    <td>Jan</td>
+    <td>63</td>  
+    <td bgcolor="#00AA000"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#007700"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>    
+  </tr>  
+  
+    <tr>
+    <td>Sam <d>
+    <td>64</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    </tr>  
+
+  <tr>
+    <td>Eve</td>
+    <td>65</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#FFFFFF"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#007700"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    
+  </tr>
+
+  <tr>
+    <td>John</td>
+    <td>66</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00AA00"> </td>
+    <td bgcolor="#007700"> </td>    
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    
+  </tr>
+
+  <tr>
+    <td>George</td>
+    <td>67</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#007700"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+  </tr>  
+  
+    <tr>
+    <td>Sam <d>
+    <td>63</td>  
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#00FF00"> </td>
+    <td bgcolor="#007700"> </td>
+    <td bgcolor="#FF0000"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td>
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    <td bgcolor="#F6F6F6"> </td> 
+    </tr>  
+
+
+</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{"course_info":
+  [{
+  "instructor": "Sam",
+  "course_name": "Python",
+  "num_labs": 32,
+  "low_student": 60,
+  "high_student": 79
+}
+]}
